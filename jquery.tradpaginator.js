@@ -28,9 +28,37 @@
 					runningpage:curpage
 				}
 			));
-		});	
-		$(".tradpaginator_activebut").click(function(){settings.onPageButtonClick($(this), $(this).attr('data-pageno'))});
+		});
+		
+		var clickmethodfunct = function(pageno){
+			if(settings.submitionmethod == 'form')
+			{
+				if($("#" + settings.postMethodOptions.pageinputid).length == 0 || $("#" + settings.postMethodOptions.formid).length == 0 && settings.devmode)
+				{
+					alert('!!!tradpaginator alert!!!\nThe form id or the hidden input id does not exist in the DOM');	
+				}
+				else
+				{
+					$("#" + settings.postMethodOptions.pageinputid).val(pageno);
+					$("#" + settings.postMethodOptions.formid).submit();
+				}
+			}
+			else if(settings.submitionmethod == 'url')
+			{
+				/*
+				getMethodOptions:{
+					pageinputvarname: 'page',
+					numberofrowsperpagevarname:'',
+					alignbyvarname:''
+				},
+				*/
+			}
+		}
+			
+		$(".tradpaginator_activebut").click(function(){settings.onPageButtonClick($(this), $(this).attr('data-pageno')); methodfunct($(this).attr('data-pageno'));});
 		$(".tradpaginator_activebut").hover(function(){settings.onPageButtonHover($(this), $(this).attr('data-pageno'))});
+		
+		
 	}
 	
 	var getPagesRange = function(curpage, totalPagesOnResultSet){
@@ -70,6 +98,7 @@
 	var methods = {
 		init : function( options ) { 
 			settings = $.extend( {
+				devmode:false,
 				style: 'default',
 				totalPageButtonsNumber:11,
 				'include_jumpmenu' : true,
@@ -79,11 +108,8 @@
 				include_fistlastbuttons: true,
 				first:'first',
 				last:'last',
-				'include_firstlastbuttons': true,
-				'enable_numberofrowsperpage':false,
-				'enable_alignby':false,
 				centered:true,
-				submitionmethod:'none', // either 'post', 'get' or 'none'
+				submitionmethod:'none', // either 'form', 'url' or 'none'
 				postMethodOptions:{
 					pageinputid: '',
 					numberofrowsperpageinputid:'',

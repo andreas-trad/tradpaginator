@@ -7,20 +7,27 @@
 	<script>
 		$(document).ready(function(){
 			$(".testdivs").tradpaginator('init', {
-				onPageButtonClick:function(el, pageno){el.css('color', '#000')},
-				onPageButtonHover:function(el, pageno){el.css('color', '#0F0')},
+				devmode:true,
+				//onPageButtonClick:function(el, pageno){},
+				//onPageButtonHover:function(el, pageno){el.css('color', '#0F0')},
 				previous:'<',
 				next:'>',
 				first:'<<',
-				last:'>>'
+				last:'>>',
+				submitionmethod:'form',
+				postMethodOptions:{
+					pageinputid:'pagenod',
+					formid:'myform'
+				}
 			});
 			$(".testdivs").tradpaginator('display', 8, 17);
 		});
 	</script>
 </head>
 <body>
-<div class="testdivs"></div>
-
-<div class="testdivs"></div>
+<form action="./test.html" method="post" id="myform">
+	<input type="hidden" id="pageno" name="pageno" />
+    <div class="testdivs"></div>
+</form>
 </body>
 </html>
