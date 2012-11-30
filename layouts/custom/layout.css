@@ -1,0 +1,19 @@
+.tradpaginator_page{
+	height:12px;
+	padding:4px;
+	font-size:12px;
+	color:#FFF;
+	background-color:#222299;
+	transition-duration: 0.2s;
+	-moz-transition-duration: 0.2s; /* Firefox 4 */
+	-webkit-transition-duration: 0.2s; /* Safari and Chrome */
+	-o-transition-duration: 0.2s; /* Opera */
+	cursor:pointer;
+}
+.tradpaginator_page:hover{
+	background-color:#5555bb !important;
+}
+.tradpaginator_page.tradpaginator_active{
+	background-color:#992222 !important;
+	cursor:default !important;
+}

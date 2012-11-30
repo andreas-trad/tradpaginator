@@ -1,0 +1,26 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="./underscore-min.js"></script>
+	<script src="../jquery.tradpaginator.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(".testdivs").tradpaginator('init', {
+				onPageButtonClick:function(el, pageno){el.css('color', '#000')},
+				onPageButtonHover:function(el, pageno){el.css('color', '#0F0')},
+				previous:'<',
+				next:'>',
+				first:'<<',
+				last:'>>'
+			});
+			$(".testdivs").tradpaginator('display', 8, 17);
+		});
+	</script>
+</head>
+<body>
+<div class="testdivs"></div>
+
+<div class="testdivs"></div>
+</body>
+</html>
