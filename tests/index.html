@@ -14,10 +14,15 @@
 				next:'>',
 				first:'<<',
 				last:'>>',
-				submitionmethod:'form',
+				submitionmethod:'url',
 				postMethodOptions:{
 					pageinputid:'pagenod',
 					formid:'myform'
+				},
+				getMethodOptions:{
+					pageinputvarname: 'page',
+					numberofrowsperpagevarname:'',
+					alignbyvarname:''
 				}
 			});
 			$(".testdivs").tradpaginator('display', 8, 17);

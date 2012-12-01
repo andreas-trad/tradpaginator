@@ -45,19 +45,42 @@
 			}
 			else if(settings.submitionmethod == 'url')
 			{
-				/*
-				getMethodOptions:{
-					pageinputvarname: 'page',
-					numberofrowsperpagevarname:'',
-					alignbyvarname:''
-				},
-				*/
+				var url =  window.location.toString();
+				var urlarray = url.split("?");
+				var query = '';
+				if(urlarray.length > 1)
+				{
+					query = urlarray[1];
+				}
+				var queryarray = query.split("&");
+				var newqueryarray = [];
+				var pagekeyfound = false;
+				if(queryarray.length > 1)
+				{
+					for(var i=0; i<queryarray.length; i++)
+					{
+						if(queryarray[i].split('=')[0] == settings.getMethodOptions.pageinputvarname)
+						{
+							pagekeyfound = true;
+							newqueryarray.push(queryarray[i].split('=')[0] + '=' + pageno);
+						}
+						else
+						{
+							newqueryarray.push(queryarray[i]);
+						}
+					}
+				}
+				if(!pagekeyfound)
+				{
+					newqueryarray.push(settings.getMethodOptions.pageinputvarname + '=' + pageno);
+				}
+				console.log(newqueryarray);
+				window.location = urlarray[0] + '?' + newqueryarray.join("&");
 			}
 		}
 			
-		$(".tradpaginator_activebut").click(function(){settings.onPageButtonClick($(this), $(this).attr('data-pageno')); methodfunct($(this).attr('data-pageno'));});
+		$(".tradpaginator_activebut").click(function(){settings.onPageButtonClick($(this), $(this).attr('data-pageno')); clickmethodfunct($(this).attr('data-pageno'));});
 		$(".tradpaginator_activebut").hover(function(){settings.onPageButtonHover($(this), $(this).attr('data-pageno'))});
-		
 		
 	}
 	
@@ -101,7 +124,7 @@
 				devmode:false,
 				style: 'default',
 				totalPageButtonsNumber:11,
-				'include_jumpmenu' : true,
+				include_jumpmenu : true,
 				include_previousnextbuttons: true,
 				previous:'previous',
 				next:'next',
