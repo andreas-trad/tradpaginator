@@ -14,7 +14,7 @@
 				next:'>',
 				first:'<<',
 				last:'>>',
-				submitionmethod:'url',
+				submitionmethod:'form',
 				postMethodOptions:{
 					pageinputid:'pagenod',
 					formid:'myform'
@@ -26,13 +26,39 @@
 				}
 			});
 			$(".testdivs").tradpaginator('display', 8, 17);
+			
+			$("#test2").tradpaginator('init', {
+				style:'custom',
+				devmode:true,
+				//onPageButtonClick:function(el, pageno){},
+				//onPageButtonHover:function(el, pageno){el.css('color', '#0F0')},
+				previous:'prev',
+				next:'next',
+				first:'first',
+				last:'last',
+				submitionmethod:'url',
+				postMethodOptions:{
+					pageinputid:'pagenod',
+					formid:'myform'
+				},
+				getMethodOptions:{
+					pageinputvarname: 'page',
+					numberofrowsperpagevarname:'',
+					alignbyvarname:''
+				}
+			});
+			$("#test2").tradpaginator('display', 4, 12);
 		});
 	</script>
 </head>
 <body>
 <form action="./test.html" method="post" id="myform">
+	<div class="testdivs"></div>
 	<input type="hidden" id="pageno" name="pageno" />
     <div class="testdivs"></div>
 </form>
+<p>
+	<div id="test2"></div>
+</p>
 </body>
 </html>

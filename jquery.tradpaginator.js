@@ -4,6 +4,7 @@
 	var m_templateloaded = false;
 	var m_templatefunct = '';
 	_.templateSettings.variable = "pages";
+	var aa = 1;
 	
 	var getbaseurlforlayoutload = function(){
 		var fullsrc = $('script[src*="jquery.tradpaginator.js"]').attr('src');
@@ -25,7 +26,10 @@
 					first:settings.first,
 					last:settings.last,
 					lastpage:totalpagesonresultset,
-					runningpage:curpage
+					runningpage:curpage,
+					include_jumpmenu:settings.include_jumpmenu,
+					jumpmenu_caption:settings.jumpmenu_caption,
+					aa:aa
 				}
 			));
 		});
@@ -79,10 +83,16 @@
 			}
 		}
 			
-		$(".tradpaginator_activebut").click(function(){settings.onPageButtonClick($(this), $(this).attr('data-pageno')); clickmethodfunct($(this).attr('data-pageno'));});
-		$(".tradpaginator_activebut").hover(function(){settings.onPageButtonHover($(this), $(this).attr('data-pageno'))});
+		$("[data-aa=" + aa + "] .tradpaginator_activebut").click(function(){settings.onPageButtonClick($(this), $(this).attr('data-pageno')); clickmethodfunct($(this).attr('data-pageno'));});
+		$("[data-aa=" + aa + "] .tradpaginator_activebut").hover(function(){settings.onPageButtonHover($(this), $(this).attr('data-pageno'))});
 		
-	}
+		if(settings.include_jumpmenu)
+		{
+			$("[data-aa=" + aa + "] .tradpaginatorjumpmenu").change(function(){settings.onPageButtonClick($(this), $(this).val()); clickmethodfunct($(this).val());});
+		}
+		
+		aa++;
+	} // end of dodisplay
 	
 	var getPagesRange = function(curpage, totalPagesOnResultSet){
 		pageRange = [{pageno:curpage, runningpage:true}];
@@ -125,6 +135,7 @@
 				style: 'default',
 				totalPageButtonsNumber:11,
 				include_jumpmenu : true,
+				jumpmenu_caption:'jump to page',
 				include_previousnextbuttons: true,
 				previous:'previous',
 				next:'next',

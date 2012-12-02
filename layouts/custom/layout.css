@@ -1,9 +1,10 @@
 .tradpaginator_page{
+	float:left;
 	height:12px;
 	padding:4px;
 	font-size:12px;
 	color:#FFF;
-	background-color:#222299;
+	background-color:#992222;
 	transition-duration: 0.2s;
 	-moz-transition-duration: 0.2s; /* Firefox 4 */
 	-webkit-transition-duration: 0.2s; /* Safari and Chrome */
@@ -16,4 +17,15 @@
 .tradpaginator_page.tradpaginator_active{
 	background-color:#992222 !important;
 	cursor:default !important;
+}
+.tradpaginator_wrapper{
+	clear:both;
+}
+.tradpaginatorfirstlast, .tradpaginatorprevnext{
+	float:left;
+	margin-left:4px;
+	margin-right:4px;
+}
+.clear{
+	clear:both;
 }
