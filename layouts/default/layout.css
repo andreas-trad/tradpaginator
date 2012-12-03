@@ -1,30 +1,52 @@
-.tradpaginator_page{
+.tradpaginator_default{
+	font-size:12px;
+}
+.tradpaginator_default .tradpaginator_page{
 	float:left;
-	height:12px;
-	padding:4px;
+	height:14px;
+	padding:4px 7px 4px 7px;
 	font-size:12px;
 	color:#FFF;
-	background-color:#222299;
+	background-color:#717b8f;
 	transition-duration: 0.2s;
 	-moz-transition-duration: 0.2s; /* Firefox 4 */
 	-webkit-transition-duration: 0.2s; /* Safari and Chrome */
 	-o-transition-duration: 0.2s; /* Opera */
 	cursor:pointer;
+	text-shadow:0 0 2px #000;
+	border:#848d9f 1px solid;
 }
-.tradpaginator_page:hover{
-	background-color:#5555bb !important;
+.tradpaginator_default .tradpaginator_page:hover{
+	background-color:#848d9f !important;
+	color:#333 !important;
+	text-shadow:0 0 2px #FFF !important;
 }
-.tradpaginator_page.tradpaginator_active{
-	background-color:#992222 !important;
+.tradpaginator_default .tradpaginatorfirstlast:hover, .tradpaginator_default .tradpaginatorprevnext:hover{
+	background-color:#848d9f !important;
+	color:#333 !important;
+	text-shadow:0 0 2px #FFF !important;
+}
+.tradpaginator_default .tradpaginator_page.tradpaginator_active{
+	background-color:#7f889a !important;
 	cursor:default !important;
 }
-.tradpaginator_wrapper{
+.tradpaginator_default .tradpaginator_wrapper{
 	clear:both;
 }
-.tradpaginatorfirstlast, .tradpaginatorprevnext{
+.tradpaginator_default .tradpaginatorfirstlast, .tradpaginator_default .tradpaginatorprevnext{
 	float:left;
-	margin-left:4px;
-	margin-right:4px;
+	height:14px;
+	padding:4px 7px 4px 7px;
+	font-size:12px;
+	color:#FFF;
+	background-color:#717b8f;
+	transition-duration: 0.2s;
+	-moz-transition-duration: 0.2s; /* Firefox 4 */
+	-webkit-transition-duration: 0.2s; /* Safari and Chrome */
+	-o-transition-duration: 0.2s; /* Opera */
+	cursor:pointer;
+	text-shadow:0 0 2px #000;
+	border:#848d9f 1px solid;
 }
 .clear{
 	clear:both;

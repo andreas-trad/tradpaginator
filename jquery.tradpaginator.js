@@ -1,8 +1,7 @@
 (function( $, _ ){
-	var settings;
 	var selectedpage;
 	var m_templateloaded = false;
-	var m_templatefunct = '';
+	var m_templatefunct = [];
 	_.templateSettings.variable = "pages";
 	var aa = 1;
 	
@@ -13,20 +12,20 @@
 		return urlarray.join('/')
 	}
 	
-	var dodisplay = function(curpage, totalpagesonresultset, that){
+	var dodisplay = function(that, settings){
 		//console.log(getPagesRange(curpage, totalpagesonresultset));
 		that.each(function(){
-			$(that).html(m_templatefunct(
+			$(that).html(m_templatefunct[settings.style](
 				{
-					pagebutts:getPagesRange(curpage, totalpagesonresultset),
+					pagebutts:getPagesRange(settings.curpage, settings.totalpagesonresultset, settings),
 					includeprevnext:settings.include_previousnextbuttons,
 					previous:settings.previous,
 					next:settings.next,
 					includefirstlast:settings.include_fistlastbuttons,
 					first:settings.first,
 					last:settings.last,
-					lastpage:totalpagesonresultset,
-					runningpage:curpage,
+					lastpage:settings.totalpagesonresultset,
+					runningpage:settings.curpage,
 					include_jumpmenu:settings.include_jumpmenu,
 					jumpmenu_caption:settings.jumpmenu_caption,
 					aa:aa
@@ -94,7 +93,7 @@
 		aa++;
 	} // end of dodisplay
 	
-	var getPagesRange = function(curpage, totalPagesOnResultSet){
+	var getPagesRange = function(curpage, totalPagesOnResultSet, settings){
 		pageRange = [{pageno:curpage, runningpage:true}];
 		var hasnextonright = true;
 		var hasnextonleft = true;
@@ -130,7 +129,9 @@
 	
 	var methods = {
 		init : function( options ) { 
-			settings = $.extend( {
+			var settings = $.extend( {
+				curpage:0, 
+				totalpagesonresultset:null,
 				devmode:false,
 				style: 'default',
 				totalPageButtonsNumber:11,
@@ -164,22 +165,21 @@
 				onAlignByChange:function(){},
 				onNumberOfRowsPerPageChange:function(){}
 			}, options);
-		},
-		display : function(curpage, totalpagesonresultset ) {
-			if(!m_templateloaded)
+			
+			// display process
+			if(!m_templatefunct.hasOwnProperty(settings.style))
 			{
+				//console.log('has not funct ' + settings.style);
 				var that = this;
 				var baseurl = getbaseurlforlayoutload();
 				$("head").append('<link rel="stylesheet" type="text/css" href="' + baseurl + "/layouts/" + settings.style + '/layout.css" />');
 				$.get(baseurl + "/layouts/" + settings.style + "/layout.html", function(loaded_template) {
-					m_templatefunct = _.template(loaded_template);
-					m_templateloaded = true;
-					dodisplay(curpage, totalpagesonresultset, that);
+					m_templatefunct[settings.style] = _.template(loaded_template);
+					dodisplay(that, settings);
 				});
 			}
 			else
-				dodisplay(curpage, totalpagesonresultset, that);
-		
+				dodisplay(that, settings);
 		},
 		hide:function(){
 			

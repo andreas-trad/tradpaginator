@@ -7,16 +7,18 @@
 	<script>
 		$(document).ready(function(){
 			$(".testdivs").tradpaginator('init', {
+				curpage:4,
+				totalpagesonresultset:18,
 				devmode:true,
 				//onPageButtonClick:function(el, pageno){},
 				//onPageButtonHover:function(el, pageno){el.css('color', '#0F0')},
-				previous:'<',
-				next:'>',
-				first:'<<',
-				last:'>>',
-				submitionmethod:'form',
+				previous:'previous',
+				next:'next',
+				first:'first',
+				last:'last',
+				submitionmethod:'url',
 				postMethodOptions:{
-					pageinputid:'pagenod',
+					pageinputid:'pageno',
 					formid:'myform'
 				},
 				getMethodOptions:{
@@ -25,9 +27,10 @@
 					alignbyvarname:''
 				}
 			});
-			$(".testdivs").tradpaginator('display', 8, 17);
-			
+			/*
 			$("#test2").tradpaginator('init', {
+				curpage:2,
+				totalpagesonresultset:8,
 				style:'custom',
 				devmode:true,
 				//onPageButtonClick:function(el, pageno){},
@@ -38,7 +41,7 @@
 				last:'last',
 				submitionmethod:'url',
 				postMethodOptions:{
-					pageinputid:'pagenod',
+					pageinputid:'pageno',
 					formid:'myform'
 				},
 				getMethodOptions:{
@@ -47,15 +50,15 @@
 					alignbyvarname:''
 				}
 			});
-			$("#test2").tradpaginator('display', 4, 12);
+			*/
 		});
 	</script>
 </head>
 <body>
-<form action="./test.html" method="post" id="myform">
+<form action="./" method="post" id="myform">
 	<div class="testdivs"></div>
 	<input type="hidden" id="pageno" name="pageno" />
-    <div class="testdivs"></div>
+    <!--<div class="testdivs"></div>-->
 </form>
 <p>
 	<div id="test2"></div>
