@@ -234,7 +234,44 @@ $(&quot;#mypaginationdiv&quot;).tradpaginator('init', {<br />
 });
 </code></pre>
 <b>Result</b><br />
-<img src="http://trad.webfactional.com/elabs/paginator/example1.png" />
-</p>
-<br />
+<img src="http://trad.webfactional.com/elabs/paginator/example1.png" /><br />
 By clicking to any of the page buttons or using the jump menu the form will be submitted passing the selected page number
+</p>
+<h3>3. Asynchronous page change</h3>
+<p>Let's suppose that you have:<br />
+  - 9 total pages on your illustrating results<br />
+  - You want ot illustrate 7 page buttons on the pagination control<br />
+  - You don't want ot include a page jump menu, the previous and next buttons and the last and first page buttons<br />
+- The page is built so that it aqcuires the next page through an asynchronous method (ajax, websockets etc)<br />
+- The div that you want to append the pagination controls has the id &quot;mypaginationdiv&quot;
+<br />
+- The current page is 9
+</p>
+<p>
+<pre lang="html"><code>
+&lt;form id=&quot;myform&quot; method=&quot;post&quot; action=&quot;./&quot; /&gt;
+  &lt;input type=&quot;hidden&quot; id=&quot;pageno&quot; name=&quot;pageno&quot; /&gt;
+  &lt;div id=&quot;mypaginationdiv&quot;&gt;&lt;/div&gt;
+&lt;/form&gt;
+</code></pre>
+</p>
+<p>
+<b>Code</b>
+<pre lang="javascript"><code>
+$(&quot;#mypaginationdiv&quot;).tradpaginator('init', {<br />
+  curpage:9,<br />
+  totalpagesonresultset:9,<br />
+  totalPageButtonsNumber: 7,<br/>
+  submitionmethod:'none',
+  include_jumpmenu:false,
+  include_previousnextbuttons:false,
+	include_fistlastbuttons:false,<br />
+  onPageButtonClick:function(el, pageno){
+    // do your magic stuff here
+  }<br />
+});
+</code></pre>
+<b>Result</b><br />
+<img src="http://trad.webfactional.com/elabs/paginator/asynch.png" /><br />
+By clicking to any of the page buttons the onPageButtonClick function declared will be called
+</p>
