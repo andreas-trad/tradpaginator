@@ -17,6 +17,8 @@ $(&quot;#mypaginationdiv&quot;).tradpaginator('init', {<br />
 and you get something like this appended on the selected div (mypaginationdiv):<br />
 <img src="http://trad.webfactional.com/elabs/paginator/screenshot.png" />
 </p>
+<h2>License</h2>
+Released under the <a href="http://sam.zoy.org/wtfpl/">WTFPL</a> license
 <h2>Compatibility and Dependencies</h2>
 <h3>Browser support</h3>
 <ul>
