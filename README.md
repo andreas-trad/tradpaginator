@@ -194,7 +194,7 @@ $(&quot;#mypaginationdiv&quot;).tradpaginator('init', {<br />
 });
 </code></pre>
 <b>Result</b><br />
-<img src="http://trad.webfactional.com/elabs/paginator/exapmle1.png" /><br />
+<img src="http://trad.webfactional.com/elabs/paginator/exapmle1.png" />
 By clicking to any of the page buttons or using the jump menu the page will be refreshed passing the proper value on the page parameter
 </p>
 <br />
