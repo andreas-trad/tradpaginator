@@ -290,4 +290,4 @@ tradpaginator plugin can be used for multiple instances on the same page without
 For now there is only the default style included. New styles will be added during the upcoming releases.<br />
 If you want to customize the look and style of the buttons and controls you can copy the files "layout.html" and "layout.css" from the ./layouts/default/ folder to ./layouts/custom/.<br />
 You can edit the layout.css and - or the layout.html file. In order to edit the layout.html file you need to have basic knowledge on underscore templating engine.<br />
-Having the new custom layout ready you can load it by passing the "custom" value on the style property of setting during execution.
+Having the new custom layout ready you can load it by passing the "custom" value on the style property of settings.
