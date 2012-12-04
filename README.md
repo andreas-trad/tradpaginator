@@ -194,7 +194,7 @@ $(&quot;#mypaginationdiv&quot;).tradpaginator('init', {<br />
 });
 </code></pre>
 <b>Result</b><br />
-<img src="http://trad.webfactional.com/elabs/paginator/exapmle1.png" />
+<img src="http://trad.webfactional.com/elabs/paginator/example1.png" /><br />
 By clicking to any of the page buttons or using the jump menu the page will be refreshed passing the proper value on the page parameter
 </p>
 <br />
@@ -232,7 +232,7 @@ $(&quot;#mypaginationdiv&quot;).tradpaginator('init', {<br />
 });
 </code></pre>
 <b>Result</b><br />
-<img src="http://trad.webfactional.com/elabs/paginator/exapmle1.png" />
+<img src="http://trad.webfactional.com/elabs/paginator/example1.png" />
 </p>
 <br />
 By clicking to any of the page buttons or using the jump menu the form will be submitted passing the selected page number
