@@ -1,3 +1,15 @@
+/*global jQuery */
+/*!	
+* tradpaginator.js 0.7
+*
+* Copyright 2012, Andreas Trantidis 
+* atrantidis@gmail.com
+* Released under the WTFPL license 
+* http://sam.zoy.org/wtfpl/
+*
+*/
+
+
 (function( $, _ ){
 	var selectedpage;
 	var m_templateloaded = false;

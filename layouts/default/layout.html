@@ -1,8 +1,8 @@
 <div class="tradpaginator_wrapper tradpaginator_default" data-aa="<%= pages.aa %>">
-	<% if(pages.includefirstlast){ %>
+	<% if(pages.includefirstlast && pages.runningpage != 1){ %>
 		<div class="tradpaginator_activebut tradpaginatorfirstlast tradpaginatorfirst" data-pageno="1"><%= pages.first %></div>
 	<% } %>
-	<% if(pages.includeprevnext){ %>
+	<% if(pages.includeprevnext && pages.runningpage != 1){ %>
 		<div class="tradpaginator_activebut tradpaginatorprevnext" data-pageno="<%= pages.runningpage - 1 %>"><%= pages.previous %></div>
 	<% } %>
 	<% _.each(pages.pagebutts, function( page ){ %>
@@ -10,10 +10,10 @@
 		<%= page.pageno %>
 	</div>
 	<% }); %>
-	<% if(pages.includeprevnext){ %>
+	<% if(pages.includeprevnext && pages.runningpage != pages.lastpage){ %>
 		<div class="tradpaginator_activebut tradpaginatorprevnext" data-pageno="<%= pages.runningpage + 1 %>"><%= pages.next %></div>
 	<% } %>
-	<% if(pages.includefirstlast){ %>
+	<% if(pages.includefirstlast && pages.runningpage != pages.lastpage){ %>
 		<div class="tradpaginator_activebut tradpaginatorfirstlast tradpaginatorlast" data-pageno="<%= pages.lastpage %>"><%= pages.last %></div>
 	<% } %>
 	<div class="clear"></div>
