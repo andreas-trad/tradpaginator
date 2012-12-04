@@ -40,6 +40,15 @@ How many times have you found yourself coding again and again a pagination contr
 Decide which is the page range that should be illustrated, center the current page within this range, include a jump menu, bind a click action to each button in order to actually do something and many more are aspects that we face again and again when building custom web pages including pagination logic.<br />
 tradpaginator plugin provides an easy and rapid way to append pagination buttons and controls letting you to state the parameters and taking care of all the rest.<br />
 tradpaginator illustrates the page buttons and  controls and it lets you chain their functionality with the logic and structure of your application.
+<h2>Installation</h2>
+In order for the plugin to operate you need to include the following lines to your code:
+<pre lang="html"><code>
+&lt;!-- having the dependencies loaded: --&gt; 
+&lt;script src=&quot;./path/to/jquery.js&quot;&gt;&lt;/script&gt;
+&lt;scirpt src=&quot;./path/to/underscore.js&quot;&gt;&lt;/script&gt;
+&lt;!-- load the plugin --&gt;
+&lt;script src=&quot;./path/to/jquery.tradpaginator.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
 <h2>Basic usage</h2>
 In order to display the pagination buttons within a selected div just call the tradpaginator method, passing your settings:
 <pre lang="javascript"><code>
@@ -265,7 +274,7 @@ $(&quot;#mypaginationdiv&quot;).tradpaginator('init', {<br />
   submitionmethod:'none',
   include_jumpmenu:false,
   include_previousnextbuttons:false,
-	include_fistlastbuttons:false,<br />
+  include_fistlastbuttons:false,<br />
   onPageButtonClick:function(el, pageno){
     // do your magic stuff here
   }<br />
