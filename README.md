@@ -37,7 +37,7 @@ and you get something like this appended on the selected div (mypaginationdiv):<
 How many times have you found yourself coding again and again a pagination controls section for a project of yours? <br />
 Decide which is the page range that should be illustrated, center the current page within this range, include a jump menu, bind a click action to each button in order to actually do something and many more are aspects that we face again and again when building custom web pages including pagination logic.<br />
 tradpaginator plugin provides an easy and rapid way to append pagination buttons and controls letting you to state the parameters and taking care of all the rest.<br />
-Not only it illustrates (properly) the page buttons and the other pagination controls but it also chains their functionality with the logic and structure of the application.
+tradpaginator illustrates the page buttons and  controls and it lets you chain their functionality with the logic and structure of your application.
 <h2>Basic usage</h2>
 In order to display the pagination buttons within a selected div just call the tradpaginator method, passing your settings:
 <pre lang="javascript"><code>
