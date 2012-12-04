@@ -133,16 +133,16 @@ $(&quot;#mypaginationdiv&quot;).tradpaginator('init', {<br />
   </tr>
   <tr>
     <td>postMethodOptions</td>
-    <td><p>(Object):<br />
+    <td><p>(Object): <i>should be filled when 'form' submittionmethod is selected</i><br />
       {<br />
        pageinputid (the id of the form input that holds the page to go when form is submitted)<br />
        formid (the form id)<br />
-      |}</p></td>
+      }</p></td>
     <td>&nbsp;</td>
   </tr>
   <tr>
     <td>getMethodOptions</td>
-    <td>(Object):<br />
+    <td>(Object):<i> should be filled when url submittionmethod is selected</i><br />
       {<br />
       pageinputvarname (the name of the url parameter that defines the page number)<br />
       }</td>
@@ -168,3 +168,71 @@ define a function to be called when a page button is hoverd. </td>
     <td>&nbsp;</td>
   </tr>
 </table>
+<h2>Examples</h2>
+<h3>1. Change page through url parameter</h3>
+<p>Let's suppose that you have:<br />
+  - 150 total pages on your illustrating results<br />
+  
+  - You want ot illustrate 7 page buttons on the pagination control<br />
+  - You want ot include a page jump menu, the previous and next buttons and the last and first page buttons<br />
+- The page is built so that it takes the page number from the url from the parameter page<br />
+- The div that you want to append the pagination controls has the id &quot;mypaginationdiv&quot;
+<br />
+- The current page is 9
+</p>
+<p>
+<b>Code</b>
+<pre lang="javascript"><code>
+$(&quot;#mypaginationdiv&quot;).tradpaginator('init', {<br />
+  curpage:9,<br />
+  totalpagesonresultset:150,<br />
+  totalPageButtonsNumber: 7,<br/>
+  submitionmethod:'url',<br />
+  getMethodOptions:{<br />
+    pageinputvarname: 'page'<br />
+  }<br />
+});
+</code></pre>
+<b>Result</b><br />
+<img src="http://trad.webfactional.com/elabs/paginator/exapmle1.png" /><br />
+By clicking to any of the page buttons or using the jump menu the page will be refreshed passing the proper value on the page parameter
+</p>
+<br />
+<h3>2. Change page by submitting a form</h3>
+<p>Let's suppose that you have:<br />
+  - 150 total pages on your illustrating results<br />
+  
+  - You want ot illustrate 7 page buttons on the pagination control<br />
+  - You want ot include a page jump menu, the previous and next buttons and the last and first page buttons<br />
+- The page is built so that it takes the page number (among others) through a form<br />
+- The div that you want to append the pagination controls has the id &quot;mypaginationdiv&quot;
+<br />
+- The current page is 9
+</p>
+<p>
+<pre lang="html"><code>
+&lt;form id=&quot;myform&quot; method=&quot;post&quot; action=&quot;./&quot; /&gt;
+  &lt;input type=&quot;hidden&quot; id=&quot;pageno&quot; name=&quot;pageno&quot; /&gt;
+  &lt;div id=&quot;mypaginationdiv&quot;&gt;&lt;/div&gt;
+&lt;/form&gt;
+</code></pre>
+</p>
+<p>
+<b>Code</b>
+<pre lang="javascript"><code>
+$(&quot;#mypaginationdiv&quot;).tradpaginator('init', {<br />
+  curpage:9,<br />
+  totalpagesonresultset:150,<br />
+  totalPageButtonsNumber: 7,<br/>
+  submitionmethod:'form',<br />
+  postMethodOptions:{<br />
+    pageinputid: 'pageno',
+    formid: 'myform'<br />
+  }<br />
+});
+</code></pre>
+<b>Result</b><br />
+<img src="http://trad.webfactional.com/elabs/paginator/exapmle1.png" />
+</p>
+<br />
+By clicking to any of the page buttons or using the jump menu the form will be submitted passing the selected page number
