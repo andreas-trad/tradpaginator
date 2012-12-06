@@ -28,7 +28,7 @@ Released under the <a href="http://sam.zoy.org/wtfpl/">WTFPL</a> license
   <li>Opera 9.5+ (9.01+ as of 1.10)</li>
   <li>Google Chrome 1.0+</li>
   <li>iOS 2.0+</li>
-  <li>Opera Mini (to a certain degree)</li>
+  <li>Opera Mini</li>
 </ul>
 <h3>Dependencies</h3>
 <ul>
