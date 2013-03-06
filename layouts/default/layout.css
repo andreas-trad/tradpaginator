@@ -51,3 +51,18 @@
 .clear{
 	clear:both;
 }
+.tradpaginatororder{
+	cursor:pointer;
+}
+.tradpaginatorasc{
+	padding-left:20px;
+	background-image:url(../icons/asc.png);
+	background-position:left;
+	background-repeat:no-repeat;
+}
+.tradpaginatordesc{
+	background-image:url(../icons/desc.png);
+	background-position:left;
+	background-repeat:no-repeat;
+	padding-left:20px;
+}

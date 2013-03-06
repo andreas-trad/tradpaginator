@@ -28,7 +28,7 @@ Released under the <a href="http://sam.zoy.org/wtfpl/">WTFPL</a> license
   <li>Opera 9.5+ (9.01+ as of 1.10)</li>
   <li>Google Chrome 1.0+</li>
   <li>iOS 2.0+</li>
-  <li>Opera Mini</li>
+  <li>Opera Mini (to a certain degree)</li>
 </ul>
 <h3>Dependencies</h3>
 <ul>
@@ -71,8 +71,8 @@ $(&quot;#mypaginationdiv&quot;).tradpaginator('init', {<br />
   </tr>
   <tr>
     <td width="29%">curpage </td>
-    <td width="47%">(int) the number of the current page</td>
-    <td width="24%">1</td>
+    <td width="47%">(int) the number of the current page OR 'auto'. Use 'auto' if you want the plugin to auto detect the current page either from the url (with submitionmethod = 'url') or from the corresponding input field (with submitionmethod = 'form'). If the plugin does not auto-detect the value it will set the page = 1</td>
+    <td width="24%">'auto'</td>
   </tr>
   <tr>
     <td>totalpagesonresultset</td>
@@ -148,6 +148,8 @@ $(&quot;#mypaginationdiv&quot;).tradpaginator('init', {<br />
       {<br />
        pageinputid (the id of the form input that holds the page to go when form is submitted)<br />
        formid (the form id)<br />
+alignbyinputid (the id of the form input that holds the the name of the column that the results are ordered by)<br />
+ascdescinputid (the id of the form input that holds the ordering direction)<br />
       }</p></td>
     <td>&nbsp;</td>
   </tr>
@@ -156,7 +158,22 @@ $(&quot;#mypaginationdiv&quot;).tradpaginator('init', {<br />
     <td>(Object):<i> should be filled when url submittionmethod is selected</i><br />
       {<br />
       pageinputvarname (the name of the url parameter that defines the page number)<br />
+      orderbyinputvarname (the name of the url parameter that defines the column by which the results are ordered by)<br />
+ascdescinputvarname (the name of the url parameter that defines the ordering direction)<br />
       }</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>orderinginfo</td>
+    <td>{<br />
+    enable (default: false. Set this value to true if you want to enable the ordering functionality of the plugin)<br />
+currentorderbycol (either specify the current column name by which the results are ordered by or set it to auto and let the plugin auto-detect it either from the url or from the corresponding form input)<br />
+defaultordercol (if you set the currentorderbycol to auto and the plugin does not succeed finding the value it will set the currentorderbycol to the value of this attribute)<br />
+currentascdesc (either specify the current ordering direction by which the results are ordered by or set it to auto and let the plugin auto-detect it either from the url or from the corresponding form input)<br />
+defaultascdesc (if you set the currentascdesc to auto and the plugin does not succeed finding the value it will set the currentascdesc to the value of this attribute)<br />
+ascendingvalue (this is the value that the plugin will set to url or the corresponding input field in the case that ascending order should be implied. The default value of this variable is 'asc')<br />
+descendingvalue (this is the value that the plugin will set to url or the corresponding input field in the case that descending order should be implied. The default value of this variable is desc)<br />
+    }</td>
     <td>&nbsp;</td>
   </tr>
   <tr>
@@ -179,7 +196,7 @@ define a function to be called when a page button is hoverd. </td>
     <td>&nbsp;</td>
   </tr>
 </table>
-<h2>Examples</h2>
+<h2>Pagination Examples</h2>
 <h3>1. Change page through url parameter</h3>
 <p>Let's suppose that you have:<br />
   - 150 total pages on your illustrating results<br />
@@ -284,10 +301,45 @@ $(&quot;#mypaginationdiv&quot;).tradpaginator('init', {<br />
 <img src="http://trad.webfactional.com/elabs/paginator/asynch.png" /><br />
 By clicking to any of the page buttons the onPageButtonClick function declared will be called
 </p>
+<h2>Ordering functionality</h2>
+<p>From version 0.8 tradpaginator provides ordering capabilities too. The most often way that users change the ordering of a list (either by specifying the column by which the list should be ordered or by changing the ordering direction from to asc to desc to asc) is by clicking to the columns titles of a table that contains the results.<br />
+Each of the column titles (most often) represents a database column. In order to activate and use the new auto ordering functionality of the plugin you should follow these easy steps:</p>
+<p>To explain better the way the tradpaginator ordering capabilites works let's take the followng example. Let's assume that we have the following table within which we illustrate our results:</p>
+<pre lang="html"><code>
+&lt;table&gt;
+&lt;thead&gt;
+  &lt;tr&gt;
+    &lt;th&gt;ID&lt;/th&gt;
+    &lt;th&gt;Surname&lt;/th&gt;
+    &lt;th&gt;Name&lt;/th&gt;    
+  &lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+.........
+&lt;/table&gt;
+</code></pre>
+</p>
+Let's now assume that we want to enable ordering capabilities to all the three of the columns (ID, Surname, Name). The first thing we have to do is the follow is to wrap each of the column title to a span with class tradpaginatororder:<br />
+<pre lang="html"><code>
+&lt;table&gt;
+&lt;thead&gt;
+  &lt;tr&gt;
+    &lt;th&gt;&lt;span class=&quot;tradpaginatororder&quot; data-col=&quot;id&quot;&gt;ID&lt;span&gt;&lt;/th&gt;
+    &lt;th&gt;&lt;span class=&quot;tradpaginatororder&quot; data-col=&quot;surname&quot;&gt;Surname&lt;/span&gt;&lt;/th&gt;
+    &lt;th&gt;&lt;span class=&quot;tradpaginatororder&quot; data-col=&quot;name&quot;&gt;Name&lt;/span&gt;&lt;/th&gt;    
+  &lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+.........
+&lt;/table&gt;
+</code></pre>
+As you may noticed in each of the spans we added a data-col attribute. This attribute should be added and defined in all of the tradpaginatororder spans. It defines the value that will passed to the server as the ordering column.<br />
+The next thing that you should do is to enable the ordering capabilities of the plugin by 
+setting the orderinginfo.enable to true and then set up the rest of the details through orderinginfo, postMethodOptions and getMethodOptions variables. <br />
 <h2>Multiple instances</h2>
 tradpaginator plugin can be used for multiple instances on the same page without a problem
 <h2>Style and layout</h2>
 For now there is only the default style included. New styles will be added during the upcoming releases.<br />
 If you want to customize the look and style of the buttons and controls you can copy the files "layout.html" and "layout.css" from the ./layouts/default/ folder to ./layouts/custom/.<br />
 You can edit the layout.css and - or the layout.html file. In order to edit the layout.html file you need to have basic knowledge on underscore templating engine.<br />
-Having the new custom layout ready you can load it by passing the "custom" value on the style property of settings.
+Having the new custom layout ready you can load it by passing the "custom" value on the style property of setting during execution.
