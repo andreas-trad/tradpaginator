@@ -153,7 +153,7 @@
 				var queryarray = query.split("&");
 				var newqueryarray = [];
 				var pagekeyfound = false;
-				if(queryarray.length > 1)
+				if(queryarray.length > 0)
 				{
 					for(var i=0; i<queryarray.length; i++)
 					{
