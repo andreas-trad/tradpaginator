@@ -208,7 +208,7 @@
 			}
 			if(hasnextonright)
 			{
-				if(curpage + i < totalPagesOnResultSet)
+				if(curpage + i  -1 < totalPagesOnResultSet)
 				{
 					pageRange.push({pageno:curpage + i, runningpage:false});
 				}
